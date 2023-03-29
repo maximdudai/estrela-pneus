@@ -1,11 +1,11 @@
-import './App.css'
+import Navigation from "./components/Navigation/Navigation"
 
 function App() {
 
   return (
     <>
-        <div className="App">
-            hello world
+        <div className="App bg-theme-background w-full h-screen">
+            <Navigation />
         </div>
     </>
   )
