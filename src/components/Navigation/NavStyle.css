@@ -1,0 +1,7 @@
+.estrelaTitle {
+    clip-path: polygon(10% 0%, 100% 0%, 85% 100%, 0% 100%);
+}
+
+.smallNavigationListElement {
+    background-color: rgba(0, 0, 0, .15);
+}

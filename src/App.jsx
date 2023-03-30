@@ -4,7 +4,7 @@ function App() {
 
   return (
     <>
-        <div className="App bg-theme-background w-full h-screen">
+        <div className="App w-full flex justify-center items-center">
             <Navigation />
         </div>
     </>
