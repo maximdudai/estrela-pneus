@@ -3,9 +3,17 @@ import React, { useState, useEffect } from 'react';
 import Logo from "./Logo/Logo";
 import './NavStyle.css';
 
+// REACT ICONS
 import { GiCarWheel } from 'react-icons/gi';
-import { TbBrandFacebook, TbBrandInstagram, TbBrandWhatsapp, TbShoppingCartDiscount } from 'react-icons/tb'
+import { BsCart4 } from 'react-icons/bs'
+import { 
+    TbBrandFacebook, 
+    TbBrandInstagram, 
+    TbBrandWhatsapp, 
+    TbShoppingCartDiscount, 
+} from 'react-icons/tb'
 
+// FONT AWESOME ICONS
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
     faBars, 
@@ -35,34 +43,85 @@ export default function Navigation () {
     const displayMobileDeviceMenu = () => setShowMenu(!showMenu);
 
     return (
-        <nav className="w-full flex justify-between h-auto p-2 bg-main-color border-b-2 border-b-orange-400 md:container-fluid md:justify-around">
-            <div className="navigationLogo flex items-end">
-                <Logo overScreen={showMenu}/>
-                <div className={`estrelaPneusTitleContent`}>
-                    <p className="text-[13px] px-1 text-orange-400 font-semibold">Sempre ao seu dispor!</p>
-                    <h3 className="estrelaTitle text-sm w-44 text-center uppercase text-white bg-orange-500 relative right-[1.32rem]">estrela pneus</h3>
+        <nav className="w-full flex justify-center items-center h-auto p-2 bg-main-color border-b-2 border-b-orange-400">
+            <div className="navigationBarContent w-full flex justify-between md:container">
+            
+                <div className="navigationLogo w-1/3 flex items-center">
+                    <Logo />
+                    <div className={`estrelaPneusTitleContent`}>
+                        <p className="text-[13px] px-1 text-white font-semibold md:text-md">Sempre ao seu dispor!</p>
+                        <h3 className="estrelaTitle text-sm w-44 text-center uppercase text-white bg-orange-500 relative right-[1.35rem] top-[.3rem]">estrela pneus</h3>
+                    </div>
                 </div>
-            </div>
 
-            {
-                width < 768 ?
-                <div className="navigationPagesContent flex items-center text-[1.25rem] text-orange-400">
-                    <button
-                        className='px-3 text-md'
-                    >
-                        <FontAwesomeIcon icon={faUser} />
-                    </button>
-                    <button
-                        onClick={displayMobileDeviceMenu}
+                {
+                    width < 1024 ?
+                    <div className="smallNavigationBar flex items-center text-[1.25rem] text-white">
+                        <button
+                            className='px-3 text-md'
                         >
-                        <FontAwesomeIcon icon={faBars} />
-                    </button>
-                </div>
-                :
-                <div className='navigationBarLinksLarge'>
-                    
-                </div>
-            } 
+                            <FontAwesomeIcon icon={faUser} />
+                        </button>
+                        <button
+                            onClick={displayMobileDeviceMenu}
+                            >
+                            <FontAwesomeIcon icon={faBars} />
+                        </button>
+                    </div>
+                    :
+                    <div 
+                        className='largeNavigationBar flex justify-end items-center text-white w-full'>
+                        <div className="largeNavigationSearchBox cursor-pointer md:w-1/3 lg:w-2/4">
+                            <SearchBox />
+                        </div>
+
+                        <div className="largelNavigationCenterLocation w-40 mx-5 my-2">
+                            <a 
+                                className='flex items-center'
+                                href="/"
+                                >
+                                <span className='largelNavigationProfileIcon text-lg mr-3 lg:mr-1'>
+                                    <FontAwesomeIcon icon={faLocation} />
+                                </span>
+                                <span className='largelNavigationProfileCenter'>A nossa oficina</span>
+                            </a>    
+                        </div>
+
+                        <div className="largelNavigationMyVehicle w-48 mx-5 flex items-center my-2">
+                            <a 
+                                className='flex items-center'
+                                href="/"
+                                >
+                                <span className='largelNavigationProfileIcon text-lg mr-3 lg:mr-1'>
+                                    <FontAwesomeIcon icon={faCar} />
+                                </span>
+                                <span className='largelNavigationProfileVehicle'>O meu automovel</span>
+                            </a>    
+                        </div>
+
+                        <div className="largelNavigationMyAccount w-40 mx-5 flex items-center my-2">
+                            <a 
+                                className='flex items-center'
+                                href="/"
+                                >
+                                <span className='largelNavigationProfileIcon text-lg mr-3 lg:mr-1'>
+                                    <FontAwesomeIcon icon={faUser} />
+                                </span>
+                                <span className='largelNavigationProfileAccount'>A minha conta</span>
+                            </a>    
+                        </div>
+
+                        <div className="largeNavigationCart">
+                            <a 
+                                href="/">
+                                <span className="text-white">
+                                    <BsCart4 />
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                } 
+            </div>
 
             {
                 showMenu && 
