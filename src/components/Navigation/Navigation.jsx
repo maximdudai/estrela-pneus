@@ -4,7 +4,7 @@ import Logo from "./Logo/Logo";
 import './NavStyle.css';
 
 import { GiCarWheel } from 'react-icons/gi';
-import { TbShoppingCartDiscount } from 'react-icons/tb'
+import { TbBrandFacebook, TbBrandInstagram, TbBrandWhatsapp, TbShoppingCartDiscount } from 'react-icons/tb'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
@@ -19,6 +19,7 @@ import {
     faPhone
 } from "@fortawesome/free-solid-svg-icons";
 import LineBreak from '../Modals/LineBreak/LineBreak';
+import SearchBox from '../Modals/LineBreak/SearchBox/SearchBox';
 
 export default function Navigation () {
     const [showMenu, setShowMenu] = useState(false);
@@ -94,16 +95,8 @@ export default function Navigation () {
                             </div>
                         </div>
 
-                        <div className="smallNavigationBarSearch flex justify-between items-center rounded bg-white w-[98%] p-2 text-white font-md">
-                            <div className="smallNavigationBarButton p-1.5">
-                                <button className="smallNavigationBarSearchButton focus:outline-none">
-                                    <p className='text-gray-500 font-bold'>Pesquisar..</p>
-                                </button>
-                            </div>
-
-                            <div className="smallNavigationBarSearchIcon text-gray-500">
-                                <FontAwesomeIcon icon={faSearch} />
-                            </div>
+                        <div className="smallNavigationBarSearch w-full flex justify-center">
+                            <SearchBox />
                         </div>
 
                         <div className="smallNavigationBarLinks w-full flex flex-col items-center p-1">
@@ -160,7 +153,7 @@ export default function Navigation () {
                                                 <TbShoppingCartDiscount />
                                             </span>
                                             <span className='smallNavigationPneuName uppercase px-2 text-orange-400'>
-                                                Discontos
+                                                Descontos
                                             </span>
                                         </div>
 
@@ -214,13 +207,36 @@ export default function Navigation () {
 
                             <LineBreak />
 
-                            <div className="smallNavigationContactUs smallNavigationListElement p-2 w-full flex justify-between items-center">
-                                <div className="smallNavigationContactContent">
-                                    <span className="smallNavigationContact">Entre em contacto connosco!</span>
-                                </div>
-                                <div className="smallNavigationContactIcon">
-                                    <FontAwesomeIcon icon={faPhone} />
-                                </div>
+                            <div className="smallNavigationContactUs smallNavigationListElement rounded p-2 py-4 w-full">
+                                <a 
+                                    className='w-full flex justify-between'
+                                    href="/">
+                                    <div className="smallNavigationContactContent">
+                                        <span className="smallNavigationContact">Entre em contacto connosco!</span>
+                                    </div>
+                                    <div className="smallNavigationContactIcon">
+                                        <FontAwesomeIcon icon={faPhone} />
+                                    </div>
+                                </a>
+
+                            </div>
+
+                            <div className="smallNavigationSocialLinks flex justify-between w-full mt-10">
+                                <a 
+                                    className='smallNavigationListElement p-3 rounded-full text-4xl'
+                                    href="/">
+                                    <TbBrandInstagram />
+                                </a>
+                                <a 
+                                    className='smallNavigationListElement p-3 rounded-full text-4xl'
+                                    href="/">
+                                    <TbBrandFacebook />
+                                </a>
+                                <a 
+                                    className='smallNavigationListElement p-3 rounded-full text-4xl'
+                                    href="/">
+                                    <TbBrandWhatsapp />
+                                </a>
                             </div>
 
                         </div>
