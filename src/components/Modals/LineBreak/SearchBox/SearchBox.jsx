@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+
 import SearchPage from "../../SearchPage/SearchPage";
 
 
@@ -13,7 +14,7 @@ const SearchBox = () => {
     };
 
     return (
-        <div className="search w-full flex justify-center">
+        <div className="navigationSearchComponent w-full flex justify-center">
             {
                 visibleSearchPage && <SearchPage onClosePage={onClientClickSearch}/>
             }

@@ -82,7 +82,7 @@ const SearchPage = (props) => {
 
     return (
         <>
-            <div className="navigationSearch absolute z-20 w-full flex flex-col items-center h-full bg-white text-black top-0 left-0 right-0 bottom-0 p-2">
+            <div className="navigationSearch absolute z-20 w-full h-screen flex flex-col items-center bg-white text-black top-0 left-0 right-0 bottom-0 p-2 md:w-1/4">
                 
                 <div className="navigationSearchContent border-[1px] border-gray-400 rounded w-full h-16 flex items-center">
                     <div className="searchBoxInputArea w-full flex items-center">
@@ -129,7 +129,7 @@ const SearchPage = (props) => {
                     </div>
 
                     <div className="navigationSearchPageHistory mt-2">
-                        <div className="navigationSearchPageContent max-h-64 overflow-y-scroll">
+                        <div className={`navigationSearchPageContent max-h-64 overflow-y-scroll`}>
                             {
                                 searchHistory &&
                                     <ul className="mt-1">
@@ -166,7 +166,7 @@ const SearchPage = (props) => {
                     </div>
                 </div>
 
-                <div className="closeSearchPage flex items-center justify-center py-3 fixed bottom-0 left-1/2">
+                <div className="closeSearchPage w-full h-screen flex flex-col items-center justify-end py-3 relative top-0">
                     <button
                         className="w-10 h-10 flex items-center justify-center text-2xl rounded-full border-2 text-gray-500 border-gray-400 bg-gray-200"
                         onClick={props.onClosePage}>
