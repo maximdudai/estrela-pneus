@@ -166,7 +166,7 @@ const SearchPage = (props) => {
                     </div>
                 </div>
 
-                <div className="closeSearchPage w-full h-screen flex flex-col items-center justify-end py-3 relative top-0">
+                <div className="closeSearchPage w-full h-screen flex flex-col items-center justify-end py-3 relative bottom-10">
                     <button
                         className="w-10 h-10 flex items-center justify-center text-2xl rounded-full border-2 text-gray-500 border-gray-400 bg-gray-200"
                         onClick={props.onClosePage}>
