@@ -83,7 +83,7 @@ const SearchPage = (props) => {
 
     return (
         <>
-            <div className="navigationSearch overflow-hidden absolute z-20 w-full h-screen flex flex-col items-center bg-white text-black top-0 left-0 right-0 bottom-0 p-2 md:w-1/4">
+            <div className="navigationSearch overflow-hidden absolute z-20 w-full h-full flex flex-col items-center bg-white text-black top-0 left-0 right-0 bottom-0 p-2 md:w-1/4">
                 
                 <div className="navigationSearchContent border-[1px] border-gray-400 rounded w-full h-16 flex items-center">
                     <div className="searchBoxInputArea w-full flex items-center">
@@ -153,10 +153,12 @@ const SearchPage = (props) => {
 
                         {
                             searchHistory.length >= 1 &&
-                            <div className="navigationSearchPageClear mt-2">
+                            <div 
+                                className="navigationSearchPageClear mt-2">
                                 <button
+                                    type="submit"
                                     onClick={clearClientSearchHistory}
-                                    className="text-sm"  
+                                    className="text-sm py-2 bg-red-200"  
                                 >
                                     Excluir Tudo
                                 </button>

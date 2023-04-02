@@ -6,7 +6,7 @@ const SearchData = ({ searchFilter }) => {
         {filteredWords.map((word, i) => (
           <li
             key={i}
-            className="m-1 text-gray-600 rounded-lg w-auto p-1 px-2 border-2 border-gray-400 bg-gray-200"
+            className="m-1 text-gray-600 rounded-lg w-auto p-1 px- border-2 border-gray-400 bg-gray-200"
           >
             {word}
           </li>
