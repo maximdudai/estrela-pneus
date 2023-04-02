@@ -158,7 +158,7 @@ const SearchPage = (props) => {
                                 <button
                                     type="submit"
                                     onClick={clearClientSearchHistory}
-                                    className="text-sm py-2 bg-red-200"  
+                                    className="text-sm py-2"  
                                 >
                                     Excluir Tudo
                                 </button>
