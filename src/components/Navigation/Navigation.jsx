@@ -48,9 +48,9 @@ export default function Navigation () {
             
                 <div className="navigationLogo w-1/3 flex items-center">
                     <Logo />
-                    <div className={`estrelaPneusTitleContent`}>
+                    <div className={`estrelaPneusTitleContent flex flex-col`}>
                         <p className="text-[13px] px-1 text-white font-semibold md:text-md">Sempre ao seu dispor!</p>
-                        <h3 className="estrelaTitle text-sm w-44 text-center uppercase text-white bg-orange-500 relative right-[1.35rem] top-[.3rem]">estrela pneus</h3>
+                        <h3 className="flex items-center justify-center estrelaTitle text-sm w-44 text-center uppercase text-white bg-orange-500 relative right-[1.35rem] top-[.3rem] md:top-[.5rem] md:left-[-1.65rem] md:h-7">estrela pneus</h3>
                     </div>
                 </div>
 

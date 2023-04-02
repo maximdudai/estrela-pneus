@@ -4,9 +4,9 @@ function App() {
 
   return (
     <>
-        <div className="App w-full flex justify-center items-center">
+        <main className="App w-full flex justify-center items-center">
             <Navigation />
-        </div>
+        </main>
     </>
   )
 }
