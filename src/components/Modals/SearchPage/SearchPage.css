@@ -1,0 +1,13 @@
+/* For webkit browsers like Chrome and Safari */
+::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #eeeeee;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #999999;
+    border-radius: 3px;
+  }

@@ -1,6 +1,7 @@
 import { faClose, faRemove, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
+import './SearchPage.css';
 
 import SearchData from "../../data/SearchData";
 
@@ -82,7 +83,7 @@ const SearchPage = (props) => {
 
     return (
         <>
-            <div className="navigationSearch absolute z-20 w-full h-screen flex flex-col items-center bg-white text-black top-0 left-0 right-0 bottom-0 p-2 md:w-1/4">
+            <div className="navigationSearch overflow-hidden absolute z-20 w-full h-screen flex flex-col items-center bg-white text-black top-0 left-0 right-0 bottom-0 p-2 md:w-1/4">
                 
                 <div className="navigationSearchContent border-[1px] border-gray-400 rounded w-full h-16 flex items-center">
                     <div className="searchBoxInputArea w-full flex items-center">
