@@ -1,11 +1,14 @@
 import Navigation from "./components/Navigation/Navigation"
+import TireSearch from "./components/tiresConfig/tireSearch"
 
 function App() {
 
   return (
     <>
-        <main className="App w-full flex justify-center items-center">
+        <main className="App w-full flex flex-col justify-center items-center">
             <Navigation />
+
+            <TireSearch />
         </main>
     </>
   )

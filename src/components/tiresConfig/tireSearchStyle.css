@@ -1,0 +1,12 @@
+.tireSearchConfig {
+    background-image: url('./assets/tireConfigBackground.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px;
+
+}
+
+.tireSearchConfig > a {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
