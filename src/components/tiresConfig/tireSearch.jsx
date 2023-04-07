@@ -1,6 +1,7 @@
 
 import { AiOutlineUnorderedList } from "react-icons/ai";
 import { GiCarWheel } from "react-icons/gi"
+import { BsCarFront } from 'react-icons/bs'
 
 import './tireSearchStyle.css';
 
@@ -37,7 +38,7 @@ const TireSearch = () => {
                         href="/">
                         
                         <div className="tireSearchVehicleIcon w-10 h-10 flex justify-center items-center rounded-full border-[1px] border-gray-400 text-3xl">
-                            <GiCarWheel />
+                            <BsCarFront />
                         </div>
 
                         <div className="tireSearchVehicleContent">
