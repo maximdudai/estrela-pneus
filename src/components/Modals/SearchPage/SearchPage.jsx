@@ -28,7 +28,9 @@ const SearchPage = (props) => {
     };
 
     const onSearchEnter = (e) => {
-        if (e.key !== "Enter") return;
+        if(e.key !== "Enter") return;
+        if(!searchBoxTextInput.length) return;
+
         setSearchHistory((prev) => [...prev, searchBoxTextInput]);
         saveSearchedText();
     };
@@ -48,6 +50,10 @@ const SearchPage = (props) => {
     const saveSearchedText = () => {
         localStorage.setItem("clientSearchHistory", JSON.stringify(searchHistory));
         setSearchBoxTextInput('');
+    };
+
+    const onClientClickSuggestion = (e) => {
+        console.log(e.target.value);
     };
 
     useEffect(() => {
@@ -119,7 +125,7 @@ const SearchPage = (props) => {
                     </div>
                     
                     <div className="navigationSearchSuggestion w-full mt-1 p-1 h-48 overflow-y-scroll">
-                        <SearchData searchFilter={filterSearchBox} />
+                        <SearchData clickedList={onClientClickSuggestion} searchFilter={filterSearchBox} />
                     </div>
                 </div>
                 
@@ -153,23 +159,19 @@ const SearchPage = (props) => {
 
                         {
                             searchHistory.length >= 1 &&
-                            <div 
-                                className="navigationSearchPageClear mt-2">
-                                <button
-                                    type="submit"
-                                    onClick={clearClientSearchHistory}
-                                    className="text-sm py-2"  
-                                >
-                                    Excluir Tudo
-                                </button>
-                            </div>
+                            <button
+                                className="navigationSearchPageClear p-2 mt-2 bg-red-200 text-sm"  
+                                onClick={clearClientSearchHistory}
+                            >
+                                Excluir Tudo
+                            </button>
                         }
                        
 
                     </div>
                 </div>
 
-                <div className="closeSearchPage w-full h-screen flex flex-col items-center justify-end py-3 relative bottom-10">
+                <div className="closeSearchPage w-full flex flex-col items-center justify-end py-3 absolute bottom-0">
                     <button
                         className="w-10 h-10 flex items-center justify-center text-2xl rounded-full border-2 text-gray-500 border-gray-400 bg-gray-200"
                         onClick={props.onClosePage}>
