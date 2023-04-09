@@ -177,7 +177,7 @@ const TireConfig = ({ onClose, modal }) => {
                                         </div>
                                         <div className="tireSeasonSummerContent px-5">
                                             <div className="summerContentTitle flex flex-col">
-                                                <span className="font-semibold">Abril &mdash; Setembro</span>
+                                                <span className="font-semibold">Todas as estações</span>
                                             </div>
                                             <div className="summerContentDescription">
                                                 <p>
