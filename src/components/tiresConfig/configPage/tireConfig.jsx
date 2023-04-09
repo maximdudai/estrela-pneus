@@ -129,7 +129,7 @@ const TireConfig = ({ onClose, modal }) => {
                             </div>
 
                             {
-                                showSeasonGuide &&
+                                showSeasonGuide && tireConfigStep.current === 1 &&
                                 <div className="tireSeasonGuideContent">
                                     <div className="tireSeasonSummer mt-5 flex items-start">
                                         <div className="tireSeasonSummerIcon w-26 md:w-24">
