@@ -7,8 +7,7 @@ const SearchData = ({ clickedList, searchFilter }) => {
           <li
             onClick={clickedList}
             key={i}
-            value={word}
-            className="m-1 text-gray-600 rounded-lg min-w-min p-1 border-2 border-gray-400 bg-gray-200"
+            className="w-auto m-1 p-1 text-gray-600 rounded border-[1px] border-gray-400"
           >
             {word}
           </li>

@@ -53,7 +53,8 @@ const SearchPage = (props) => {
     };
 
     const onClientClickSuggestion = (e) => {
-        console.log(e.target.value);
+        const suggestedButton = e.target.textContent;
+        setSearchBoxTextInput(suggestedButton);
     };
 
     useEffect(() => {
