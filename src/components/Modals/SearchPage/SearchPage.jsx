@@ -145,7 +145,7 @@ const SearchPage = (props) => {
                                             searchHistory.map((search, index) => {
                                                 return <li 
                                                     onClick={() => removeClientHistoryElement(index)}
-                                                    className="w-[95%] flex justify-between m-1 text-gray-600 rounded-lg p-1 px-2 border-2 border-gray-400 bg-gray-200"
+                                                    className="w-[95%] flex justify-between m-1 text-gray-600 p-1 px-2 border-b-[1px] border-gray-400"
                                                     key={index}>
                                                     <span className="searchContent">{search}</span>
                                                     <span className="searchRemoveIcon">
@@ -161,7 +161,7 @@ const SearchPage = (props) => {
                         {
                             searchHistory.length >= 1 &&
                             <button
-                                className="navigationSearchPageClear p-2 mt-2 bg-red-200 text-sm"  
+                                className="navigationSearchPageClear border-[1px] rounded p-2 mt-2 text-sm hover:bg-gray-300"  
                                 onClick={clearClientSearchHistory}
                             >
                                 Excluir Tudo
@@ -174,7 +174,7 @@ const SearchPage = (props) => {
 
                 <div className="closeSearchPage w-full flex flex-col items-center justify-end py-3 absolute bottom-0">
                     <button
-                        className="w-10 h-10 flex items-center justify-center text-2xl rounded-full border-2 text-gray-500 border-gray-400 bg-gray-200"
+                        className="w-10 h-10 flex items-center justify-center text-2xl rounded-full border-[1px] text-gray-500 border-gray-400 hover:bg-gray-200"
                         onClick={props.onClosePage}>
                         <FontAwesomeIcon icon={faClose} />
                     </button>
