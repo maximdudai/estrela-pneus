@@ -7,7 +7,6 @@ function App() {
     <>
         <main className="App w-full flex flex-col justify-center items-center">
             <Navigation />
-
             <TireSearch />
         </main>
     </>

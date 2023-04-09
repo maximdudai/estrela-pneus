@@ -4,17 +4,30 @@ import { GiCarWheel } from "react-icons/gi"
 import { BsCarFront } from 'react-icons/bs'
 
 import './tireSearchStyle.css';
+import { useState } from "react";
+import TireConfig from "./configPage/tireConfig";
 
 const TireSearch = () => {
+    const [showModalByType, setShowModalByType] = useState(null);
+
+    const toggleClientModal = (toggle = null) => {
+        setShowModalByType(null);
+    };
+
+    const displayClientModal = (type = 'dimension') => {
+        setShowModalByType(type);
+    };
+
     return (
         <>
-            <div className="tireSearchContainer mt-10 flex flex-col items-center justify-center w-[95%] h-[15rem] md:w-1/2">
+            <div className="tireSearchContainer mt-10 flex flex-col items-center justify-center w-[95%] h-[15rem] md:w-2/3">
                 <div className="tireSearchTitle w-full text-white text-2xl uppercase border-b-2 border-gray-500">
                     <h3>Configurar os pneus</h3>
                 </div>
 
                 <div className="tireSearchConfig mt-3 w-full h-full flex flex-col justify-center items-center md:flex-row md:justify-evenly">
-                    <a 
+                    <button 
+                        onClick={() => displayClientModal('dimension')}
                         className="tireSearchDimension w-[95%] m-1 flex justify-between items-center bg-white p-2 rounded md:w-2/5"
                         href="/">
                         
@@ -31,9 +44,10 @@ const TireSearch = () => {
                             <AiOutlineUnorderedList />
                         </div>
 
-                    </a>
+                    </button>
 
-                    <a 
+                    <button 
+                        onClick={() => displayClientModal('model')}
                         className="tireSearchVehicle w-[95%] m-1 flex justify-between items-center bg-white p-2 rounded md:w-2/5"
                         href="/">
                         
@@ -50,8 +64,13 @@ const TireSearch = () => {
                             <AiOutlineUnorderedList />
                         </div>
 
-                    </a>
+                    </button>
                 </div>
+
+                {
+                    showModalByType !== 'null' && <TireConfig onClose={toggleClientModal} modal={showModalByType}/>
+                }
+
             </div>
         </>
     )
