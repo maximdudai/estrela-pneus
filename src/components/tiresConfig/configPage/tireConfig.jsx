@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { GrClose } from "react-icons/gr";
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs'
 
@@ -12,7 +12,7 @@ import seasonWinter from './configAssets/snowflake.png'
 import seasonUniversal from './configAssets/season.png'
 
 const TireConfig = ({ onClose, modal }) => {
-
+    const searchPageContentArea = useRef(null);
     const tireConfigStep = useRef(1);
     const [selectedSeason, setSelectedSeason] = useState('summer');
     const [showSeasonGuide, setShowSeasonGuide] = useState(false);
@@ -46,11 +46,27 @@ const TireConfig = ({ onClose, modal }) => {
         />
     };
 
+    useEffect(() => {
+        document.addEventListener('mousedown', onClientClickOutside);
+    
+        return () => {
+            document.removeEventListener('mousedown', onClientClickOutside);
+        };
+    }, []);
+
+    const onClientClickOutside = (e) => {
+        if(searchPageContentArea.current && !searchPageContentArea.current.contains(e.target)) {
+            onClose();
+        }
+    };
+
     return (
         <>
             {   
                 modal === 'dimension' &&
-                <div className="tireConfigModal bg-white p-2 w-full h-full absolute top-0 right-0 md:w-1/3">
+                <div 
+                    ref={searchPageContentArea}
+                    className="tireConfigModal bg-white p-2 w-full h-full absolute top-0 right-0 md:w-1/3">
                     
                     <div className="configModalCloseButton py-2">
                         <button 
