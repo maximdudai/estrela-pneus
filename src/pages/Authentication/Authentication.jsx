@@ -7,6 +7,8 @@ import { AiOutlineEye, AiOutlineEyeInvisible} from 'react-icons/ai'
 
 import Navigation from "../../components/Navigation/Navigation";
 
+import './Authentication.css';
+
 const Authentication = () => {
     const [moreInformationsLabel, toggleMoreInformationsLabel] = useState(false);
     const [visiblePassword, toggleVisiblePassword] = useState(false);
@@ -24,28 +26,32 @@ const Authentication = () => {
             <Navigation />
 
             <div className="clientAuthenticationApp container mt-40 w-[95%] md:w-1/3 lg:w-1/4">
-                <div className="clientEmailAddress p-2 border-[1px] border-blue-500 rounded flex flex-col">
+                
+                <div className="clientEmailAddress h-15 p-2 border-[1px] border-blue-500 rounded flex flex-col">
+                    
                     <div className="clientEmailAddressLabel">
-                        <span className="text-gray-400">Email Address</span>
+                        <span className="text-gray-400 relative bottom-3 bg-theme-background p-2">Email Address</span>
                     </div>
-                    <div className="clientEmaiAddressInput mt-1">
+                    <div className="clientEmaiAddressInput">
                         <input 
-                            className="bg-transparent py-1 w-full text-white text-lg focus:outline-none"
+                            className="bg-transparent py-1.5 w-full text-white text-lg focus:outline-none"
                             type="text" 
                             name="clientEmailAddress" 
                             placeholder="example@estrela-pneus.com"
                             id="clientEmailAddress" />
                     </div>
+
                 </div>
 
-                <div className="clientPassword mt-5 p-2 border-[1px] border-blue-500 rounded flex flex-col">
-                    <div className="clientPasswordLabel">
+                <div className="clientPassword mt-7 p-2 border-[1px] border-blue-500 rounded flex flex-col">
+                    
+                    <div className="clientPasswordLabel w-20 text-center relative bottom-4 bg-theme-background p-2">
                         <span className="text-gray-400">Password</span>
                     </div>
-                    <div className="clientPassword mt-1 flex justify-between">
+                    <div className="clientPassword flex justify-between">
                         <div className="clientPasswordInput w-full">
                             <input 
-                                className="bg-transparent py-1 w-full text-white text-lg focus:outline-none"
+                                className="bg-transparent w-full text-white text-lg focus:outline-none"
                                 type={visiblePassword ? 'text' : 'password'} 
                                 name="clientPassword" 
                                 placeholder={visiblePassword ? 'password' : '********'}
@@ -54,7 +60,7 @@ const Authentication = () => {
                         <div className="clientPasswordInputType rounded ml-2 hover:bg-blue-500 transition-all duration-200">
                             <button 
                                 onClick={toggleClientPasswordInput}
-                                className="text-white border-[1px] border-blue-400 p-2 rounded"
+                                className="text-white border-[1px] border-blue-400 p-1 rounded"
                                 type="submit">
                                 {!visiblePassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
                             </button>

@@ -1,0 +1,7 @@
+.clientEmailAddress, .clientPassword {
+    line-height: 5px;
+}
+
+.clientPassword {
+    line-height: 0px;
+}
