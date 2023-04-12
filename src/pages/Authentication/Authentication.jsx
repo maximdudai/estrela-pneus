@@ -30,14 +30,14 @@ const Authentication = () => {
                 <div className="clientEmailAddress h-15 p-2 border-[1px] border-blue-500 rounded flex flex-col">
                     
                     <div className="clientEmailAddressLabel">
-                        <span className="text-gray-400 relative bottom-3 bg-theme-background p-2">Email Address</span>
+                        <span className="text-gray-400 relative bottom-3 bg-theme-background p-2">E-mail</span>
                     </div>
                     <div className="clientEmaiAddressInput">
                         <input 
                             className="bg-transparent py-1.5 w-full text-white text-lg focus:outline-none"
                             type="text" 
                             name="clientEmailAddress" 
-                            placeholder="example@estrela-pneus.com"
+                            placeholder="exemple@estrela-pneus.com"
                             id="clientEmailAddress" />
                     </div>
 
@@ -45,8 +45,8 @@ const Authentication = () => {
 
                 <div className="clientPassword mt-7 p-2 border-[1px] border-blue-500 rounded flex flex-col">
                     
-                    <div className="clientPasswordLabel w-20 text-center relative bottom-4 bg-theme-background p-2">
-                        <span className="text-gray-400">Password</span>
+                    <div className="clientPasswordLabel w-[7.5rem] text-center relative bottom-4 bg-theme-background p-2">
+                        <span className="text-gray-400">Palavra-passe</span>
                     </div>
                     <div className="clientPassword flex justify-between">
                         <div className="clientPasswordInput w-full">
