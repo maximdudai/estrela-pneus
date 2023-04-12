@@ -63,7 +63,7 @@ export default function Navigation () {
                     <div className="smallNavigationBar flex items-center text-[1.25rem] text-white">
                         <Link
                             to={'/Authentication'}
-                            className='px-3 text-md'
+                            className='mr-6 text-md'
                         >
                             <FontAwesomeIcon icon={faUser} />
                         </Link>
@@ -136,9 +136,12 @@ export default function Navigation () {
                         <div className="closeNavigationMenu w-full flex justify-between p-5 text-2xl">
                             
                             <div className="smallNavigationAccountMenu">
-                                <button>
+                                <Link
+                                    onClick={displayMobileDeviceMenu}
+                                    to={'/Authentication'}
+                                >
                                     <FontAwesomeIcon icon={faUser} />
-                                </button>
+                                </Link>
                             </div>
 
                             { // is user loggedin
