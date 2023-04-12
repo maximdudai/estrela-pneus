@@ -50,20 +50,23 @@ export default function Navigation () {
             
                 <div className="navigationLogo w-1/3 flex items-center">
                     <Logo />
-                    <div className={`estrelaPneusTitleContent flex flex-col`}>
+                    <Link 
+                        to={'/'}
+                        className={`estrelaPneusTitleContent flex flex-col`}>
                         <p className="text-[13px] px-1 text-white font-semibold md:text-md">Sempre ao seu dispor!</p>
                         <h3 className="flex items-center justify-center estrelaTitle text-sm w-44 text-center uppercase text-white bg-orange-500 relative right-[1.35rem] top-[.3rem] md:top-[.5rem] md:left-[-1.65rem] md:h-7">estrela pneus</h3>
-                    </div>
+                    </Link>
                 </div>
 
                 {
                     width < 1024 ?
                     <div className="smallNavigationBar flex items-center text-[1.25rem] text-white">
-                        <button
+                        <Link
+                            to={'/Authentication'}
                             className='px-3 text-md'
                         >
                             <FontAwesomeIcon icon={faUser} />
-                        </button>
+                        </Link>
                         <button
                             onClick={displayMobileDeviceMenu}
                             >
@@ -102,16 +105,15 @@ export default function Navigation () {
                         </div>
 
                         <div className="largelNavigationMyAccount w-40 mx-5 flex items-center my-2">
-                            <Link to={'/Authentication'}>Authentication</Link>
-                            <a 
+                            <Link 
                                 className='flex items-center'
-                                href="/"
+                                to={'/Authentication'}
                                 >
                                 <span className='largelNavigationProfileIcon text-lg mr-3 lg:mr-1'>
                                     <FontAwesomeIcon icon={faUser} />
                                 </span>
                                 <span className='largelNavigationProfileAccount'>A minha conta</span>
-                            </a>    
+                            </Link>    
                         </div>
 
                         <div className="largeNavigationCart">
@@ -255,15 +257,15 @@ export default function Navigation () {
                                 </div>
 
                                 <div className="smallNavigationMyAccount flex items-center my-2">
-                                    <a 
+                                    <Link 
                                         className='flex items-center'
-                                        href="/"
+                                        to="/Authentication"
                                         >
                                         <span className='smallNavigationProfileIcon mr-3 text-lg'>
                                             <FontAwesomeIcon icon={faUser} />
                                         </span>
                                         <span className='smallNavigationProfileAccount'>A minha conta</span>
-                                    </a>    
+                                    </Link>    
                                 </div>
                             </div>
 
