@@ -1,13 +1,20 @@
-import Navigation from "./components/Navigation/Navigation"
-import TireSearch from "./components/tiresConfig/tireSearch"
+import React from 'react';
+import { BrowserRouter,Route, Routes } from 'react-router-dom';
+
+import HomePage from './pages/HomePage/HomePage';
+import Authentication from './pages/Authentication/Authentication';
 
 function App() {
 
   return (
     <>
         <main className="App w-full flex flex-col justify-center items-center">
-            <Navigation />
-            <TireSearch />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="Authentication" element={<Authentication />} />
+            </Routes>
+          </BrowserRouter>
         </main>
     </>
   )

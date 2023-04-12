@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import { Link } from 'react-router-dom';
+
 import Logo from "./Logo/Logo";
 import './NavStyle.css';
 
@@ -100,6 +102,7 @@ export default function Navigation () {
                         </div>
 
                         <div className="largelNavigationMyAccount w-40 mx-5 flex items-center my-2">
+                            <Link to={'/Authentication'}>Authentication</Link>
                             <a 
                                 className='flex items-center'
                                 href="/"
