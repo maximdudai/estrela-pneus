@@ -3,15 +3,22 @@ import { Link } from "react-router-dom";
 
 import {BsChevronDown, BsChevronUp} from 'react-icons/bs'
 import { FiLogIn } from 'react-icons/fi'
-import { AiOutlineEye, AiOutlineEyeInvisible} from 'react-icons/ai'
+import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlineUserAdd} from 'react-icons/ai'
 
 import Navigation from "../../components/Navigation/Navigation";
 
 import './Authentication.css';
 
 const Authentication = () => {
+    const [authStep, setAuthStep] = useState('login');
     const [moreInformationsLabel, toggleMoreInformationsLabel] = useState(false);
     const [visiblePassword, toggleVisiblePassword] = useState(false);
+
+    
+
+    const toggleClientAuthStep = () => {
+        setAuthStep(authStep === 'login' ? 'register' : 'login');
+    };
 
     const toggleClientPasswordInput = () => {
         toggleVisiblePassword(!visiblePassword);
@@ -25,25 +32,49 @@ const Authentication = () => {
         <div className="AuthenticationApp w-full flex flex-col justify-center items-center">
             <Navigation />
 
-            <div className="clientAuthenticationApp container mt-40 w-[95%] md:w-1/3 lg:w-1/4">
+            <div className="clientAuthenticationApp container flex flex-col items-center mt-36 w-[95%] md:w-1/3 lg:w-1/4">
                 
-                <div className="clientEmailAddress h-15 p-2 border-[1px] border-blue-500 rounded flex flex-col">
-                    
+                <div className="clientCreateAccount mb-12 px-4 w-full border-l-[1px] border-blue-500">
+                    <div className="clientCreateAccountTitle text-gray-400">{authStep === 'login' ? 'Ainda não é nosso cliente?' : 'Já e nosso cliente?'}</div>
+                    <button 
+                        onClick={toggleClientAuthStep}
+                        className="clientCreateAccountButton text-white">
+                        {authStep === 'login' ? 'Criar Conta' : 'Autentificação'}
+                    </button>
+                </div>
+
+                <div className="clientEmailAddress w-full h-15 p-2 border-[1px] border-blue-500 rounded flex flex-col">
                     <div className="clientEmailAddressLabel">
                         <span className="text-gray-400 relative bottom-3 bg-theme-background p-2">E-mail</span>
                     </div>
                     <div className="clientEmaiAddressInput">
                         <input 
                             className="bg-transparent py-1.5 w-full text-white text-lg focus:outline-none"
-                            type="text" 
+                            type="email"
                             name="clientEmailAddress" 
                             placeholder="exemple@estrela-pneus.com"
                             id="clientEmailAddress" />
                     </div>
-
                 </div>
 
-                <div className="clientPassword mt-7 p-2 border-[1px] border-blue-500 rounded flex flex-col">
+                {
+                    authStep === 'register' && 
+                    <div className="clientFullName w-full mt-7 h-13 p-1 px-2 border-[1px] border-blue-500 rounded flex flex-col">
+                        <div className="clientFullNameLabel relative bottom-4">
+                            <span className="text-gray-400 bg-theme-background px-2">Nome próprio</span>
+                        </div>
+                        <div className="clientEmaiAddressInput">
+                            <input 
+                                className="bg-transparent w-full text-white text-lg focus:outline-none"
+                                type="text" 
+                                name="clientFullName" 
+                                placeholder="Diogo Inácio"
+                                id="clientFullName" />
+                        </div>
+                    </div>
+                }
+
+                <div className="clientPassword w-full mt-7 p-2 border-[1px] border-blue-500 rounded flex flex-col">
                     
                     <div className="clientPasswordLabel w-[7.5rem] text-center relative bottom-4 bg-theme-background p-2">
                         <span className="text-gray-400">Palavra-passe</span>
@@ -68,7 +99,7 @@ const Authentication = () => {
                     </div>
                 </div>
 
-                <div className="clientForgotPassword w-full mt-2 border-b-[1px]">
+                <div className="clientForgotPassword w-full mt-2 border-b-[1px] border-gray-600">
                     <button 
                         onClick={toggleClientMoreInformation}
                         className="flex w-full items-center text-gray-300 border-gray-400"
@@ -98,8 +129,17 @@ const Authentication = () => {
                     <button 
                         className="transparent uppercase w-full text-white flex items-center justify-center focus:outline-none"
                         type="submit">
-                        <span className="authenticationButtonContent">login</span>
-                        <span className="authenticationButtonIcon ml-2"><FiLogIn /></span>
+                        {authStep === 'login' ? (
+                            <div className="authButtonLogIn flex items-center">
+                                <span>Login</span>
+                                <span className="authenticationButtonIcon ml-2"><FiLogIn /></span>
+                            </div>
+                        ) : (
+                            <div className="authButtonCreateAccount flex items-center">
+                                <span>Criar Conta</span>
+                                <span className="authenticationButtonIcon ml-2"><AiOutlineUserAdd /></span>
+                            </div>
+                        )}
                     </button>
                 </div>
             </div>
