@@ -11,7 +11,7 @@ function App() {
         <main className="App w-full flex flex-col justify-center items-center">
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<HomePage />} />
+              <Route path="/" exact element={<HomePage />} />
               <Route path="Authentication" element={<Authentication />} />
             </Routes>
           </BrowserRouter>

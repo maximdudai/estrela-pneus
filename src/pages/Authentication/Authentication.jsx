@@ -1,6 +1,8 @@
 import { React, useState } from "react";
 import { Link } from "react-router-dom";
 
+import instance from "../../api/axios";
+
 import {BsChevronDown, BsChevronUp} from 'react-icons/bs'
 import { FiLogIn } from 'react-icons/fi'
 import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlineUserAdd} from 'react-icons/ai'
@@ -14,18 +16,61 @@ const Authentication = () => {
     const [moreInformationsLabel, toggleMoreInformationsLabel] = useState(false);
     const [visiblePassword, toggleVisiblePassword] = useState(false);
 
-    
+    const [clientEmail, setClientEmail] = useState('');
+    const [clientFullName, setClientFullName] = useState('');
+    const [clientPassword, setClientPassword] = useState('');
+    const [clientToken, setClientToken] = useState(null);
 
     const toggleClientAuthStep = () => {
         setAuthStep(authStep === 'login' ? 'register' : 'login');
     };
-
     const toggleClientPasswordInput = () => {
         toggleVisiblePassword(!visiblePassword);
     };
-
     const toggleClientMoreInformation = () => {
         toggleMoreInformationsLabel(!moreInformationsLabel);
+    };
+
+    // AUTHENTICATION FORM
+    const onClientTypeEmail = (clientMail) => {
+        setClientEmail(clientMail.target.value);
+    };
+
+    const onClientTypeFullName = (fName) => {
+        setClientEmail(fName.target.value);
+    };
+
+    const onClientTypePassword = (clientPass) => {
+        setClientPassword(clientPass.target.value);
+    };
+
+    const onClientAuthenticate = async () => {
+        try {
+            const authData = await instance.post('/Authentication', {
+                clientEmail,
+                clientFullName,
+                clientPassword
+            });
+            setClientToken(authData.data.token);
+        
+        } catch (error) {
+            console.log(error);
+        }
+    };
+      
+      
+
+    // AUTHENTICATION SEND INFORMATIONS
+    function onClientClickAuthentication() {
+        
+        const onClientLogin = () => {
+            // something
+        };
+        const onClientRegister = () => {
+            onClientAuthenticate();
+        };
+
+        authStep === 'login' ? onClientLogin() : onClientRegister();
     };
 
     return (
@@ -42,13 +87,13 @@ const Authentication = () => {
                         {authStep === 'login' ? 'Criar Conta' : 'Autentificação'}
                     </button>
                 </div>
-
                 <div className="clientEmailAddress w-full h-15 p-2 border-[1px] border-blue-500 rounded flex flex-col">
                     <div className="clientEmailAddressLabel">
                         <span className="text-gray-400 relative bottom-3 bg-theme-background p-2">E-mail</span>
                     </div>
                     <div className="clientEmaiAddressInput">
                         <input 
+                            onChange={onClientTypeEmail}
                             className="bg-transparent py-1.5 w-full text-white text-lg focus:outline-none"
                             type="email"
                             name="clientEmailAddress" 
@@ -63,8 +108,9 @@ const Authentication = () => {
                         <div className="clientFullNameLabel relative bottom-4">
                             <span className="text-gray-400 bg-theme-background px-2">Nome próprio</span>
                         </div>
-                        <div className="clientEmaiAddressInput">
+                        <div className="clientFullNameInput">
                             <input 
+                                onChange={onClientTypeFullName}
                                 className="bg-transparent w-full text-white text-lg focus:outline-none"
                                 type="text" 
                                 name="clientFullName" 
@@ -82,6 +128,7 @@ const Authentication = () => {
                     <div className="clientPassword flex justify-between">
                         <div className="clientPasswordInput w-full">
                             <input 
+                                onChange={onClientTypePassword}
                                 className="bg-transparent w-full text-white text-lg focus:outline-none"
                                 type={visiblePassword ? 'text' : 'password'} 
                                 name="clientPassword" 
@@ -127,8 +174,10 @@ const Authentication = () => {
 
                 <div className="clientLogInButton cursor-pointer w-full rounded p-2 border-[1px] border-blue-400 mt-5 hover:bg-blue-500 transition-all duration-200">
                     <button 
+                        type="submit"
                         className="transparent uppercase w-full text-white flex items-center justify-center focus:outline-none"
-                        type="submit">
+                        onClick={onClientClickAuthentication}
+                    >
                         {authStep === 'login' ? (
                             <div className="authButtonLogIn flex items-center">
                                 <span>Login</span>
