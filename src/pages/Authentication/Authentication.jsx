@@ -2,6 +2,7 @@ import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 // import instance from "../../api/axios";
+// import axios from "../../api/axios";
 import axios from "axios";
 
 import {BsChevronDown, BsChevronUp} from 'react-icons/bs'
@@ -18,8 +19,11 @@ const Authentication = () => {
     const [visiblePassword, toggleVisiblePassword] = useState(false);
 
     const [clientEmail, setClientEmail] = useState('');
+    const [clientEmailError, setClientEmailError] = useState('');
+
     const [clientFullName, setClientFullName] = useState('');
     const [clientPassword, setClientPassword] = useState('');
+
     const [clientToken, setClientToken] = useState(null);
 
     const [data, setData] = useState("");
@@ -56,16 +60,12 @@ const Authentication = () => {
                 password: clientPassword
             })
 
-            setClientToken(authData.data.token);
-            console.log(authData);
-            
+            // setClientToken(authData?.data?.token);
 
         } catch (error) {
-          console.log(error);
+            setClientEmailError(error.response?.data?.error);
         }
-      };
-      
-      
+    };
 
     // AUTHENTICATION SEND INFORMATIONS
     function onClientClickAuthentication() {
@@ -108,10 +108,11 @@ const Authentication = () => {
                             id="clientEmailAddress" />
                     </div>
                 </div>
+                <span className="w-full text-red-400 text-left px-1 mt-[2px]">{clientEmailError}</span>
 
                 {
                     authStep === 'register' && 
-                    <div className="clientFullName w-full mt-7 h-13 p-1 px-2 border-[1px] border-blue-500 rounded flex flex-col">
+                    <div className="clientFullName w-full mt-5 h-13 p-1 px-2 border-[1px] border-blue-500 rounded flex flex-col">
                         <div className="clientFullNameLabel relative bottom-4">
                             <span className="text-gray-400 bg-theme-background px-2">Nome próprio</span>
                         </div>
@@ -127,7 +128,7 @@ const Authentication = () => {
                     </div>
                 }
 
-                <div className="clientPassword w-full mt-7 p-2 border-[1px] border-blue-500 rounded flex flex-col">
+                <div className="clientPassword w-full mt-5 p-2 border-[1px] border-blue-500 rounded flex flex-col">
                     
                     <div className="clientPasswordLabel w-[7.5rem] text-center relative bottom-4 bg-theme-background p-2">
                         <span className="text-gray-400">Palavra-passe</span>
