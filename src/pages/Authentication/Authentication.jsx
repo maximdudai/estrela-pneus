@@ -1,7 +1,8 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import instance from "../../api/axios";
+// import instance from "../../api/axios";
+import axios from "axios";
 
 import {BsChevronDown, BsChevronUp} from 'react-icons/bs'
 import { FiLogIn } from 'react-icons/fi'
@@ -21,6 +22,8 @@ const Authentication = () => {
     const [clientPassword, setClientPassword] = useState('');
     const [clientToken, setClientToken] = useState(null);
 
+    const [data, setData] = useState("");
+
     const toggleClientAuthStep = () => {
         setAuthStep(authStep === 'login' ? 'register' : 'login');
     };
@@ -37,7 +40,7 @@ const Authentication = () => {
     };
 
     const onClientTypeFullName = (fName) => {
-        setClientEmail(fName.target.value);
+        setClientFullName(fName.target.value);
     };
 
     const onClientTypePassword = (clientPass) => {
@@ -46,17 +49,21 @@ const Authentication = () => {
 
     const onClientAuthenticate = async () => {
         try {
-            const authData = await instance.post('/Authentication', {
-                clientEmail,
-                clientFullName,
-                clientPassword
-            });
+            
+            const authData = await axios.post('http://localhost:5000/Authentication', {
+                email: clientEmail,
+                ...(authStep === 'login' ? {} : { name: clientFullName }),
+                password: clientPassword
+            })
+
             setClientToken(authData.data.token);
-        
+            console.log(authData);
+            
+
         } catch (error) {
-            console.log(error);
+          console.log(error);
         }
-    };
+      };
       
       
 
