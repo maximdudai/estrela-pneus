@@ -3,7 +3,7 @@ import { Link, Navigate } from "react-router-dom";
 
 // import instance from "../../api/axios";
 // import axios from "../../api/axios";
-import axios from "axios";
+import axios from "../../api/axios";
 
 import {BsChevronDown, BsChevronUp} from 'react-icons/bs'
 import { FiLogIn } from 'react-icons/fi'
@@ -55,17 +55,16 @@ const Authentication = () => {
 
     // AUTHENTICATION SEND INFORMATIONS
     async function onClientClickAuthentication() {
-        
         try {
             
-            const authData = await axios.post('http://localhost:5000/Authentication/', {
+            const authData = await axios.post('/Authentication', {
                 email: clientEmail,
                 ...(authStep === 'login' ? {} : { name: clientFullName }),
                 password: clientPassword,
                 authType: authStep
             })
-
             const authDataToken = authData.data?.token;
+
             setClientToken(authDataToken);
             sessionStorage.setItem("authToken", authDataToken);
 
