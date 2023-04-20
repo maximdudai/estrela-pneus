@@ -2,6 +2,9 @@
 
 Estrela Pneus is an online shop for all types of vehicle tires. It is built using the Vite framework, ReactJS, and Tailwind CSS, as well as additional styling with CSS, Font Awesome, and React-Icons. This project was created for a colleague who wants to open their own tire company.
 
+## Estrela Pneus API
+[Estrela Pneus API](https://github.com/maximdudai/estrela-pneus-api)
+
 ## Key Features
 - Browse and purchase a variety of tires for all types of vehicles.
 - View detailed product information and specifications.
