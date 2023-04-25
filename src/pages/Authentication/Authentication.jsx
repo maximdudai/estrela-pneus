@@ -30,7 +30,7 @@ const Authentication = () => {
 
     const toggleClientAuthStep = () => {
         setAuthStep(authStep === 'login' ? 'register' : 'login');
-        if(setClientEmailError)
+        if(clientEmailError)
             setClientEmailError('');
     };
     const toggleClientPasswordInput = () => {
@@ -67,11 +67,11 @@ const Authentication = () => {
 
             setClientToken(authDataToken);
             sessionStorage.setItem("authToken", authDataToken);
-
+            
             setRedirectUser(true);
 
         } catch (error) {
-            setClientEmailError(error.response?.data.message);
+            setClientEmailError(error.response?.data?.message);
         }
 
     };
