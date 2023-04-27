@@ -10,7 +10,6 @@ Estrela Pneus is an online shop for all types of vehicle tires. It is built usin
 - View detailed product information and specifications.
 - Filter and sort products by brand, size, price, and other attributes.
 - Easily add and remove items from your cart.
-- Secure payment processing for purchases.
 
 ## Libraries and Frameworks Used
 
