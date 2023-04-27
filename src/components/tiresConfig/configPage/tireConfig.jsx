@@ -18,7 +18,7 @@ const TireConfig = ({ onClose, modal }) => {
     const [showSeasonGuide, setShowSeasonGuide] = useState(false);
 
     const onClientCloseModal = () => {
-        updateModalSeason('summer');
+        // updateModalSeason('summer');
         if(showSeasonGuide) toggleTireSeasonGuid();
         tireConfigStep.current = 1;
 
@@ -220,13 +220,14 @@ const TireConfig = ({ onClose, modal }) => {
                                 </div>
                             }
 
-                            {
-                                tireConfigStep.current == 2 &&
-                                <TireDimension />
-                            }
+                     
                         </div>
 
                     </div>
+                }
+                {
+                    tireConfigStep.current == 2 &&
+                    <TireDimension />
                 }
                 </div>
             }
