@@ -1,4 +1,4 @@
-﻿# Estrela Pneus
+﻿# [Estrela Pneus](https://estrelapneus.netlify.app/)
 
 Estrela Pneus is an online shop for all types of vehicle tires. It is built using the Vite framework, ReactJS, and Tailwind CSS, as well as additional styling with CSS, Font Awesome, and React-Icons. This project was created for a colleague who wants to open their own tire company.
 
