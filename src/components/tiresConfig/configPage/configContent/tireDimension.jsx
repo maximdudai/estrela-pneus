@@ -1,7 +1,9 @@
 const TireDimension = () => {
     return (
         <>
-
+            <div className="tireConfigDimension">
+                hello world
+            </div>
         </>
     )
 };

@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react";
+import { React, createContext, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 
 // import instance from "../../api/axios";
@@ -12,6 +12,8 @@ import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlineUserAdd} from 'react-icon
 import Navigation from "../../components/Navigation/Navigation";
 
 import './Authentication.css';
+
+export const AuthContext = createContext();
 
 const Authentication = () => {
     const [authStep, setAuthStep] = useState('login');

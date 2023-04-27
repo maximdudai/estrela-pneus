@@ -17,8 +17,23 @@ const TireConfig = ({ onClose, modal }) => {
     const [selectedSeason, setSelectedSeason] = useState('summer');
     const [showSeasonGuide, setShowSeasonGuide] = useState(false);
 
+    const onClientCloseModal = () => {
+        updateModalSeason('summer');
+        if(showSeasonGuide) toggleTireSeasonGuid();
+        tireConfigStep.current = 1;
+
+        onClose();
+    };
+
+    const onClientUpdateTireConfig = () => {
+        tireConfigStep.current ++;
+        console.log(tireConfigStep.current);
+    };
+
     const updateModalSeason = (season = 'summer') => {
         setSelectedSeason(season);
+        
+        onClientUpdateTireConfig();
     };
 
     const toggleTireSeasonGuid = () => {
@@ -56,7 +71,7 @@ const TireConfig = ({ onClose, modal }) => {
 
     const onClientClickOutside = (e) => {
         if(searchPageContentArea.current && !searchPageContentArea.current.contains(e.target)) {
-            onClose();
+            onClientCloseModal();
         }
     };
 
@@ -70,7 +85,7 @@ const TireConfig = ({ onClose, modal }) => {
                     
                     <div className="configModalCloseButton py-2">
                         <button 
-                            onClick={onClose}
+                            onClick={onClientCloseModal}
                             className="closeConfigButton w-full text-2xl text-black">
                             <GrClose />
                         </button>
@@ -145,7 +160,7 @@ const TireConfig = ({ onClose, modal }) => {
                             </div>
 
                             {
-                                showSeasonGuide && tireConfigStep.current === 1 &&
+                                showSeasonGuide &&
                                 <div className="tireSeasonGuideContent">
                                     <div className="tireSeasonSummer mt-5 flex items-start">
                                         <div className="tireSeasonSummerIcon w-26 md:w-24">
@@ -203,6 +218,11 @@ const TireConfig = ({ onClose, modal }) => {
                                         </div>
                                     </div>
                                 </div>
+                            }
+
+                            {
+                                tireConfigStep.current == 2 &&
+                                <TireDimension />
                             }
                         </div>
 
