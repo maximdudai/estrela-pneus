@@ -15,6 +15,30 @@ const tireConfigSpecification = {
     ]
 }
 
+let tireConfigLetter = [
+    'A',
+    'B',
+    'R',
+    'C',
+    '',
+    ''
+]
+let tireConfigLetterColor = [
+    'text-blue-400',
+    'text-green-400',
+    'text-gray-800',
+    'text-red-400',
+    '', ''
+]
+let tireConfigContent = [
+    'Largura do Pneu',
+    'Altura do Pneu',
+    'Tipo de Construção',
+    'Diâmetro da Jante',
+    'Índice de Carga',
+    'Índice de Velocidade Máxima'
+]
+
 import tireImage from '../../assets/pneu-dimensao.png';
 import { BsSearch } from "react-icons/bs";
 
@@ -30,19 +54,24 @@ const TireDimension = () => {
 
     const [configLetter, setConfigLetter] = useState('A');
 
-    const updateConfigLetter = (letter = 'A') => {
-        setConfigLetter(letter);
-    };
 
-    const onClientConfigWidth = (el) => {
+    const onClientConfigTire = (step, amount) => {
+        switch(step) {
+            case 'width':
+            {
+                tireConfig.tireWidth = amount;
+                break;
+            }
+            case 'heigth': {
+                tireConfig.tireHeigth = amount;
+                break;
+            }
+            default:
+                break;
+        }
         setTireDimensionConfigStep(tireDimensionConfigStep+1);
+        setConfigLetter(tireConfigLetter[tireDimensionConfigStep]);
     };
-    const onClientConfigHeigth = (el) => {
-
-    };
-
-
-
 
     return (
         <>
@@ -56,8 +85,8 @@ const TireDimension = () => {
                 <div className="tireConfigSettings w-full mt-10">
 
                     <div className="tireConfigLetterTitle w-full text-center mb-5 leading-[10px]">
-                        <h1 className="text-4xl font-bold text-blue-700">{configLetter}</h1>
-                        <span className="text-gray-500 text-[12px]">Largura do Pneu</span>
+                        <h1 className={`text-4xl font-bold ${tireConfigLetterColor[tireDimensionConfigStep - 1]}`}>{configLetter}</h1>
+                        <span className="text-gray-500 text-[12px]">{tireConfigContent[tireDimensionConfigStep - 1]}</span>
                     </div>
 
                     {
@@ -68,7 +97,7 @@ const TireDimension = () => {
                                     tireConfigSpecification.altura.map((tireWidth, tireIndex) => {
                                         return <li 
                                             className="text-black text-center rounded text-lg m-2 p-3 w-[7rem] bg-gray-200 border-[1px] border-gray-300 focus:outline-none hover:bg-slate-300 cursor-pointer"
-                                            onClick={onClientConfigWidth}
+                                            onClick={() => onClientConfigTire('width', tireWidth)}
                                             key={tireIndex}
                                             >
                                             {tireWidth}
@@ -87,7 +116,7 @@ const TireDimension = () => {
                                     tireConfigSpecification.largura.map((tireHeigth, tireIndex) => {
                                         return <li 
                                             className="text-black text-center rounded text-lg m-2 p-3 w-[7rem] bg-gray-200 border-[1px] border-gray-300 focus:outline-none hover:bg-slate-300 cursor-pointer"
-                                            onClick={onClientConfigHeigth}
+                                            onClick={() => onClientConfigTire('heigth', tireHeigth)}
                                             key={tireIndex}
                                             >
                                             {tireHeigth}
@@ -107,6 +136,16 @@ const TireDimension = () => {
                         tireDimensionConfigStep == 4 &&
                         <div className="tireConfigIndice"></div>
                     }
+
+                    {
+                        tireDimensionConfigStep == 5 &&
+                        <div className="tireConfigIndiceCharge"></div>
+                    }
+
+                    {
+                        tireDimensionConfigStep == 6 &&
+                        <div className="tireConfigIndiceSpeed"></div>
+                    }
                 </div>
 
                 <div className="tireConfigAvailablePages w-full flex justify-center mt-10">
@@ -114,6 +153,8 @@ const TireDimension = () => {
                     <button onClick={() => setTireDimensionConfigStep(2)} className={`tireConfigPage mx-1 relative w-[7px] h-[7px] rounded-full bg-gray-300 ${tireDimensionConfigStep == 2 ? 'bg-gray-500' : ''}`}></button>
                     <button onClick={() => setTireDimensionConfigStep(3)} className={`tireConfigPage mx-1 relative w-[7px] h-[7px] rounded-full bg-gray-300 ${tireDimensionConfigStep == 3 ? 'bg-gray-500' : ''}`}></button>
                     <button onClick={() => setTireDimensionConfigStep(4)} className={`tireConfigPage mx-1 relative w-[7px] h-[7px] rounded-full bg-gray-300 ${tireDimensionConfigStep == 4 ? 'bg-gray-500' : ''}`}></button>
+                    <button onClick={() => setTireDimensionConfigStep(5)} className={`tireConfigPage mx-1 relative w-[7px] h-[7px] rounded-full bg-gray-300 ${tireDimensionConfigStep == 5 ? 'bg-gray-500' : ''}`}></button>
+                    <button onClick={() => setTireDimensionConfigStep(6)} className={`tireConfigPage mx-1 relative w-[7px] h-[7px] rounded-full bg-gray-300 ${tireDimensionConfigStep == 6 ? 'bg-gray-500' : ''}`}></button>
                 </div>
 
                 <div className="tireConfigSearch w-full mt-10">
