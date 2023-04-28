@@ -1,5 +1,8 @@
 import { useRef, useState } from "react"
 
+import { BsSearch } from "react-icons/bs";
+import { GrFormPrevious } from 'react-icons/gr'
+
 const tireConfigSpecification = {
     largura: [
         205,225,195,185,31,33,115,125
@@ -40,7 +43,6 @@ let tireConfigContent = [
 ]
 
 import tireImage from '../../assets/pneu-dimensao.png';
-import { BsSearch } from "react-icons/bs";
 
 const TireDimension = () => {
 
@@ -51,8 +53,6 @@ const TireDimension = () => {
         tireIndice: 88
     });
     const [tireDimensionConfigStep, setTireDimensionConfigStep] = useState(1);
-
-    const [configLetter, setConfigLetter] = useState('A');
 
 
     const onClientConfigTire = (step, amount) => {
@@ -70,7 +70,10 @@ const TireDimension = () => {
                 break;
         }
         setTireDimensionConfigStep(tireDimensionConfigStep+1);
-        setConfigLetter(tireConfigLetter[tireDimensionConfigStep]);
+    };
+
+    const handleClientTirePage = (page) => {
+        setTireDimensionConfigStep(page);
     };
 
     return (
@@ -85,7 +88,7 @@ const TireDimension = () => {
                 <div className="tireConfigSettings w-full mt-10">
 
                     <div className="tireConfigLetterTitle w-full text-center mb-5 leading-[10px]">
-                        <h1 className={`text-4xl font-bold ${tireConfigLetterColor[tireDimensionConfigStep - 1]}`}>{configLetter}</h1>
+                        <h1 className={`text-4xl font-bold ${tireConfigLetterColor[tireDimensionConfigStep - 1]}`}>{tireConfigLetter[tireDimensionConfigStep - 1]}</h1>
                         <span className="text-gray-500 text-[12px]">{tireConfigContent[tireDimensionConfigStep - 1]}</span>
                     </div>
 
@@ -148,13 +151,26 @@ const TireDimension = () => {
                     }
                 </div>
 
-                <div className="tireConfigAvailablePages w-full flex justify-center mt-10">
-                    <button onClick={() => setTireDimensionConfigStep(1)} className={`tireConfigPage mx-1 relative w-[7px] h-[7px] rounded-full bg-gray-300 ${tireDimensionConfigStep == 1 ? 'bg-gray-500' : ''}`}></button>
-                    <button onClick={() => setTireDimensionConfigStep(2)} className={`tireConfigPage mx-1 relative w-[7px] h-[7px] rounded-full bg-gray-300 ${tireDimensionConfigStep == 2 ? 'bg-gray-500' : ''}`}></button>
-                    <button onClick={() => setTireDimensionConfigStep(3)} className={`tireConfigPage mx-1 relative w-[7px] h-[7px] rounded-full bg-gray-300 ${tireDimensionConfigStep == 3 ? 'bg-gray-500' : ''}`}></button>
-                    <button onClick={() => setTireDimensionConfigStep(4)} className={`tireConfigPage mx-1 relative w-[7px] h-[7px] rounded-full bg-gray-300 ${tireDimensionConfigStep == 4 ? 'bg-gray-500' : ''}`}></button>
-                    <button onClick={() => setTireDimensionConfigStep(5)} className={`tireConfigPage mx-1 relative w-[7px] h-[7px] rounded-full bg-gray-300 ${tireDimensionConfigStep == 5 ? 'bg-gray-500' : ''}`}></button>
-                    <button onClick={() => setTireDimensionConfigStep(6)} className={`tireConfigPage mx-1 relative w-[7px] h-[7px] rounded-full bg-gray-300 ${tireDimensionConfigStep == 6 ? 'bg-gray-500' : ''}`}></button>
+                <div className="tireConfigAvailablePages w-full flex justify-center items-center mt-10">
+                    
+                    <div className={`tireConfigPreviousPage flex items-center md:hidden ${tireDimensionConfigStep == 1 ? 'hidden' : ''} `}>
+                        <button
+                            className="text-lg fixed left-32"
+                            onClick={() => handleClientTirePage((tireDimensionConfigStep - 1))}
+                        >
+                            <GrFormPrevious />
+                        </button>
+                    </div>
+
+                    <div className="tireConfigPageButtons flex items-center">
+                        <button onClick={() => handleClientTirePage(1)} className={`tireConfigPage mx-1 relative w-[7px] h-[7px] rounded-full bg-gray-300 ${tireDimensionConfigStep == 1 ? 'bg-gray-500' : ''}`}></button>
+                        <button onClick={() => handleClientTirePage(2)} className={`tireConfigPage mx-1 relative w-[7px] h-[7px] rounded-full bg-gray-300 ${tireDimensionConfigStep == 2 ? 'bg-gray-500' : ''}`}></button>
+                        <button onClick={() => handleClientTirePage(3)} className={`tireConfigPage mx-1 relative w-[7px] h-[7px] rounded-full bg-gray-300 ${tireDimensionConfigStep == 3 ? 'bg-gray-500' : ''}`}></button>
+                        <button onClick={() => handleClientTirePage(4)} className={`tireConfigPage mx-1 relative w-[7px] h-[7px] rounded-full bg-gray-300 ${tireDimensionConfigStep == 4 ? 'bg-gray-500' : ''}`}></button>
+                        <button onClick={() => handleClientTirePage(5)} className={`tireConfigPage mx-1 relative w-[7px] h-[7px] rounded-full bg-gray-300 ${tireDimensionConfigStep == 5 ? 'bg-gray-500' : ''}`}></button>
+                        <button onClick={() => handleClientTirePage(6)} className={`tireConfigPage mx-1 relative w-[7px] h-[7px] rounded-full bg-gray-300 ${tireDimensionConfigStep == 6 ? 'bg-gray-500' : ''}`}></button>
+                    </div>
+
                 </div>
 
                 <div className="tireConfigSearch w-full mt-10">
