@@ -14,23 +14,22 @@ import seasonUniversal from './configAssets/season.png'
 const TireConfig = ({ onClose, modal }) => {
     const searchPageContentArea = useRef(null);
     const tireConfigStep = useRef(1);
-    const [selectedSeason, setSelectedSeason] = useState('summer');
+    const [selectedSeason, setSelectedSeason] = useState(null);
     const [showSeasonGuide, setShowSeasonGuide] = useState(false);
 
     const onClientCloseModal = () => {
-        // updateModalSeason('summer');
         if(showSeasonGuide) toggleTireSeasonGuid();
         tireConfigStep.current = 1;
+        setSelectedSeason(null);
 
         onClose();
     };
 
     const onClientUpdateTireConfig = () => {
         tireConfigStep.current ++;
-        console.log(tireConfigStep.current);
     };
 
-    const updateModalSeason = (season = 'summer') => {
+    const updateModalSeason = (season) => {
         setSelectedSeason(season);
         
         onClientUpdateTireConfig();

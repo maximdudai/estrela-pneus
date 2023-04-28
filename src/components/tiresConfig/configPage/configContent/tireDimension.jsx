@@ -59,11 +59,18 @@ const TireDimension = () => {
         switch(step) {
             case 'width':
             {
-                tireConfig.tireWidth = amount;
+                setTireConfig((prevState) => ({
+                    ...prevState,
+                    tireWidth: amount
+                }));
+
                 break;
             }
             case 'heigth': {
-                tireConfig.tireHeigth = amount;
+                setTireConfig((prevState) => ({
+                    ...prevState,
+                    tireHeigth: amount
+                }));
                 break;
             }
             default:
@@ -155,7 +162,7 @@ const TireDimension = () => {
                     
                     <div className={`tireConfigPreviousPage flex items-center md:hidden ${tireDimensionConfigStep == 1 ? 'hidden' : ''} `}>
                         <button
-                            className="text-lg fixed left-32"
+                            className="text-lg absolute left-32"
                             onClick={() => handleClientTirePage((tireDimensionConfigStep - 1))}
                         >
                             <GrFormPrevious />
@@ -175,7 +182,9 @@ const TireDimension = () => {
 
                 <div className="tireConfigSearch w-full mt-10">
                     <button 
-                        className="w-full flex justify-center items-center text-center rounded p-3 bg-blue-300 focus:outline-none hover:bg-blue-400">
+                        className={`w-full flex justify-center items-center text-center rounded p-3 bg-blue-300 focus:outline-none ${tireDimensionConfigStep <= 5 ? 'cursor-not-allowed': 'hover:bg-blue-400'}`}
+                        disabled={tireDimensionConfigStep <= 5}
+                        >
                         <span className="btnContent uppercase pr-2 text-lg">search</span>
                         <span className="btnIcon"><BsSearch /></span>
                     </button>
