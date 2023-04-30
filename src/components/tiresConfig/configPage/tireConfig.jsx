@@ -83,7 +83,7 @@ const TireConfig = ({ onClose, modal }) => {
                 modal === 'dimension' &&
                 <div 
                     ref={searchPageContentArea}
-                    className="tireConfigModal bg-white p-2 w-full h-full absolute top-0 right-0 md:w-1/4">
+                    className="tireConfigModal bg-white p-2 w-full h-full absolute top-0 right-0 md:w-1/3">
                     
                     <div className="configModalCloseButton py-2">
                         <button 

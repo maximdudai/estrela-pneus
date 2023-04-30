@@ -15,7 +15,16 @@ const tireConfigSpecification = {
     ],
     indiceCarga: [
         88,92
-    ]
+    ],
+    indiceSpeed: {
+        T: '190',
+        H: '210',
+        V: '240',
+        Z: '> 240',
+        R: '> 240',
+        W: '270',
+        Y: '300',
+    }
 }
 
 let tireConfigLetter = [
@@ -25,6 +34,7 @@ let tireConfigLetter = [
     'D',
     'E'
 ]
+
 let tireConfigLetterColor = [
     'text-blue-400',
     'text-green-400',
@@ -41,6 +51,10 @@ let tireConfigContent = [
 ]
 
 import tireImage from '../../assets/pneu-dimensao.png';
+import HelpGuide from "../../../Modals/HelpGuide/HelpGuide";
+
+import tireIndiceFull from '../configAssets/car-wheel.png';
+import tireIndiceEmpty from '../configAssets/flat-tire.png';
 
 const TireDimension = () => {
 
@@ -87,6 +101,8 @@ const TireDimension = () => {
     const handleClientTirePage = (page) => {
         setTireDimensionConfigStep(page);
     };
+
+    const indiceSpeedKeys = Object.keys(tireConfigSpecification.indiceSpeed);
 
     return (
         <>
@@ -164,25 +180,90 @@ const TireDimension = () => {
                     {
                         tireDimensionConfigStep == 4 &&
                         <div className="tireConfigIndice">
-                            <ul className="list-none w-auto h-auto flex flex-wrap justify-center">
-                                {
-                                    tireConfigSpecification.indiceCarga.map((tireDiameter, tireIndex) => {
-                                        return <li 
-                                            className="text-black text-center rounded text-lg m-2 p-3 w-[7rem] bg-gray-200 border-[1px] border-gray-300 focus:outline-none hover:bg-slate-300 cursor-pointer"
-                                            onClick={() => onClientConfigTire('diameter', tireDiameter)}
-                                            key={tireIndex}
-                                            >
-                                            {tireDiameter}
-                                        </li>
-                                    })
-                                }
-                            </ul>
+                            <div className="tireConfigIndiceAvailableList w-auto">
+                                <ul className="list-none w-auto h-auto flex flex-wrap justify-center">
+                                    {
+                                        tireConfigSpecification.indiceCarga.map((tireDiameter, tireIndex) => {
+                                            return <li 
+                                                className="text-black text-center rounded text-lg m-2 p-3 w-[7rem] bg-gray-200 border-[1px] border-gray-300 focus:outline-none hover:bg-slate-300 cursor-pointer"
+                                                onClick={() => onClientConfigTire('diameter', tireDiameter)}
+                                                key={tireIndex}
+                                                >
+                                                {tireDiameter}
+                                            </li>
+                                        })
+                                    }
+                                </ul>
+                            </div>
+
+                            <div className="tireConfigIndiceHelpGuide p-2">
+                                <div className="tireConfigIndiceGuid">
+                                    <HelpGuide 
+                                        className={'text-sm'}
+                                        img={tireIndiceFull}
+                                        title={'Índice de carga'}
+                                        content={'Quanto mais elevado o veículo, maior é a carga máxima suportada. É obrigatória a utilização de pneus cujo índice seja igual ou superior às recomendações presentes no livro de manutenção do veículo.'}
+                                    />
+
+                                    <HelpGuide 
+                                        className={'mt-5 text-sm'}
+                                        img={tireIndiceEmpty}
+                                        title={'Riscos de um índice de carga incorreto'}
+                                        content={'Transportar cargas pesadas aumenta o risco de deformação e estouro do pneu, por isso é essencial seguir as recomendações de carga e pressão dos pneus para garantir a segurança no trânsito e evitar penalidades.'}
+                                    />
+                                </div>
+                            </div>
+
+
                         </div>
                     }
 
                     {
                         tireDimensionConfigStep == 5 &&
-                        <div className="tireConfigIndiceSpeed"></div>
+                        <div className="tireConfigIndiceSpeed">
+                            <div className="tireConfigSpeed">
+                                <ul className="list-none w-auto h-auto flex flex-wrap justify-center">
+                                    {
+                                        indiceSpeedKeys.map((speedKey) => {
+                                            return <li 
+                                                className="text-black text-center rounded text-sm m-2 p-3 w-min-[7rem] bg-gray-200 border-[1px] border-gray-300 focus:outline-none hover:bg-slate-300 cursor-pointer"
+                                                onClick={() => onClientConfigTire('diameter', tireDiameter)}
+                                                key={speedKey}
+                                                >
+                                                {speedKey}
+                                                {/* - {speedKey}: {tireConfigSpecification.indiceSpeed[speedKey]} km/h */}
+                                            </li>
+                                        })
+                                    }
+                                </ul>
+                            </div>
+                            <div className="tireConfigSpeedGuide">
+                                <HelpGuide 
+                                    className={'mt-5 text-sm'}
+                                    img={tireIndiceFull}
+                                    imgStyle={'w-14'}
+                                    title={'Riscos de um índice de carga incorreto'}
+                                    content={
+                                        <ul className="grid grid-cols-3">
+                                            {indiceSpeedKeys.map((key) => (
+                                                <li 
+                                                    className="py-1"
+                                                    key={key}>
+                                                {key}: {tireConfigSpecification.indiceSpeed[key]}
+                                                </li>
+                                            ))}
+                                        </ul>
+
+                                    }
+                                />
+                                <HelpGuide 
+                                    className={'mt-5 text-sm'}
+                                    img={tireIndiceEmpty}
+                                    title={'Riscos'}
+                                    content={'Se você utilizar pneus de inverno ou 4 estações com a etiqueta 3PMSF, é permitida a redução do índice de velocidade em um nível (por exemplo: de V para H) sem comprometer a segurança. No entanto, utilizar pneus com índice de velocidade menor do que o recomendado pode causar perda de aderência, risco de superaquecimento e falha nos pneus, podendo até resultar na recusa do veículo pelas autoridades de trânsito durante as inspeções.'}
+                                />
+                            </div>
+                        </div>
                     }
                 </div>
 
