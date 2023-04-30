@@ -21,22 +21,20 @@ const tireConfigSpecification = {
 let tireConfigLetter = [
     'A',
     'B',
-    'R',
     'C',
-    '',
-    ''
+    'D',
+    'E'
 ]
 let tireConfigLetterColor = [
     'text-blue-400',
     'text-green-400',
-    'text-gray-800',
     'text-red-400',
-    '', ''
+    'text-fuchsia-700', 
+    'text-violet-600'
 ]
 let tireConfigContent = [
     'Largura do Pneu',
     'Altura do Pneu',
-    'Tipo de Construção',
     'Diâmetro da Jante',
     'Índice de Carga',
     'Índice de Velocidade Máxima'
@@ -70,6 +68,13 @@ const TireDimension = () => {
                 setTireConfig((prevState) => ({
                     ...prevState,
                     tireHeigth: amount
+                }));
+                break;
+            }
+            case 'diameter': {
+                setTireConfig((prevState) => ({
+                    ...prevState,
+                    tireDiameter: amount
                 }));
                 break;
             }
@@ -139,21 +144,44 @@ const TireDimension = () => {
 
                     {
                         tireDimensionConfigStep == 3 &&
-                        <div className="tireConfigDiameter"></div>
+                        <div className="tireConfigDiameter">
+                            <ul className="list-none w-auto h-auto flex flex-wrap justify-center">
+                                {
+                                    tireConfigSpecification.diametro.map((tireDiameter, tireIndex) => {
+                                        return <li 
+                                            className="text-black text-center rounded text-lg m-2 p-3 w-[7rem] bg-gray-200 border-[1px] border-gray-300 focus:outline-none hover:bg-slate-300 cursor-pointer"
+                                            onClick={() => onClientConfigTire('diameter', tireDiameter)}
+                                            key={tireIndex}
+                                            >
+                                            {tireDiameter}
+                                        </li>
+                                    })
+                                }
+                            </ul>
+                        </div>
                     }
 
                     {
                         tireDimensionConfigStep == 4 &&
-                        <div className="tireConfigIndice"></div>
+                        <div className="tireConfigIndice">
+                            <ul className="list-none w-auto h-auto flex flex-wrap justify-center">
+                                {
+                                    tireConfigSpecification.indiceCarga.map((tireDiameter, tireIndex) => {
+                                        return <li 
+                                            className="text-black text-center rounded text-lg m-2 p-3 w-[7rem] bg-gray-200 border-[1px] border-gray-300 focus:outline-none hover:bg-slate-300 cursor-pointer"
+                                            onClick={() => onClientConfigTire('diameter', tireDiameter)}
+                                            key={tireIndex}
+                                            >
+                                            {tireDiameter}
+                                        </li>
+                                    })
+                                }
+                            </ul>
+                        </div>
                     }
 
                     {
                         tireDimensionConfigStep == 5 &&
-                        <div className="tireConfigIndiceCharge"></div>
-                    }
-
-                    {
-                        tireDimensionConfigStep == 6 &&
                         <div className="tireConfigIndiceSpeed"></div>
                     }
                 </div>
@@ -175,15 +203,14 @@ const TireDimension = () => {
                         <button onClick={() => handleClientTirePage(3)} className={`tireConfigPage mx-1 relative w-[7px] h-[7px] rounded-full bg-gray-300 ${tireDimensionConfigStep == 3 ? 'bg-gray-500' : ''}`}></button>
                         <button onClick={() => handleClientTirePage(4)} className={`tireConfigPage mx-1 relative w-[7px] h-[7px] rounded-full bg-gray-300 ${tireDimensionConfigStep == 4 ? 'bg-gray-500' : ''}`}></button>
                         <button onClick={() => handleClientTirePage(5)} className={`tireConfigPage mx-1 relative w-[7px] h-[7px] rounded-full bg-gray-300 ${tireDimensionConfigStep == 5 ? 'bg-gray-500' : ''}`}></button>
-                        <button onClick={() => handleClientTirePage(6)} className={`tireConfigPage mx-1 relative w-[7px] h-[7px] rounded-full bg-gray-300 ${tireDimensionConfigStep == 6 ? 'bg-gray-500' : ''}`}></button>
                     </div>
 
                 </div>
 
                 <div className="tireConfigSearch w-full mt-10">
                     <button 
-                        className={`w-full flex justify-center items-center text-center rounded p-3 bg-blue-300 focus:outline-none ${tireDimensionConfigStep <= 5 ? 'cursor-not-allowed': 'hover:bg-blue-400'}`}
-                        disabled={tireDimensionConfigStep <= 5}
+                        className={`w-full flex justify-center items-center text-center rounded p-3 bg-blue-300 focus:outline-none ${tireDimensionConfigStep <= 4 ? 'cursor-not-allowed': 'hover:bg-blue-400'}`}
+                        disabled={tireDimensionConfigStep <= 4}
                         >
                         <span className="btnContent uppercase pr-2 text-lg">search</span>
                         <span className="btnIcon"><BsSearch /></span>

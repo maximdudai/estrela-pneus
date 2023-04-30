@@ -4,8 +4,11 @@ import { BsChevronDown, BsChevronUp } from 'react-icons/bs'
 
 import './tireConfigStyle.css';
 
+import HelpGuide from "../../Modals/HelpGuide/HelpGuide";
+
 import TireDimension from './configContent/tireDimension';
 import TireVehicleModel from './configContent/tireVehicle';
+
 
 import seasonSummer from './configAssets/sunny.png';
 import seasonWinter from './configAssets/snowflake.png'
@@ -39,6 +42,14 @@ const TireConfig = ({ onClose, modal }) => {
         setShowSeasonGuide(!showSeasonGuide);
     };
 
+    useEffect(() => {
+        document.addEventListener('mousedown', onClientClickOutside);
+    
+        return () => {
+            document.removeEventListener('mousedown', onClientClickOutside);
+        };
+    }, []);
+
     const tireSummerImage = () => {
         return <img 
             src={seasonSummer} 
@@ -59,14 +70,6 @@ const TireConfig = ({ onClose, modal }) => {
             alt="universal tire"
         />
     };
-
-    useEffect(() => {
-        document.addEventListener('mousedown', onClientClickOutside);
-    
-        return () => {
-            document.removeEventListener('mousedown', onClientClickOutside);
-        };
-    }, []);
 
     const onClientClickOutside = (e) => {
         if(searchPageContentArea.current && !searchPageContentArea.current.contains(e.target)) {
@@ -159,67 +162,33 @@ const TireConfig = ({ onClose, modal }) => {
                             </div>
 
                             {
-                                showSeasonGuide &&
-                                <div className="tireSeasonGuideContent">
-                                    <div className="tireSeasonSummer mt-5 flex items-start">
-                                        <div className="tireSeasonSummerIcon w-26 md:w-24">
-                                        {
-                                            tireSummerImage()
-                                        }
-                                        </div>
-                                        <div className="tireSeasonSummerContent px-5">
-                                            <div className="summerContentTitle flex flex-col">
-                                                <span className="font-semibold">Abril &mdash; Setembro</span>
-                                                <span className="text-gray-400 text-[12px]">04 &mdash; 09</span>
-                                            </div>
-                                            <div className="summerContentDescription">
-                                                <p>
-                                                    Este pneu padrão permite uma condução segura em todas as condições climáticas temperadas, mas é importante lembrar que pneus de verão podem perder desempenho em temperaturas abaixo de 7°C.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                showSeasonGuide && 
+                                <div className="tireSeasonContent mt-5">
 
-                                    <div className="tireSeasonWinter mt-5 flex items-start">
-                                        <div className="tireSeasonWinterIcon w-26 md:w-24">
-                                        {
-                                            tireWinterSeason()
-                                        }
-                                        </div>
-                                        <div className="tireSeasonWinterContent px-5">
-                                            <div className="winterContentTitle flex flex-col">
-                                                <span className="font-semibold">Outubro &mdash; Março</span>
-                                                <span className="text-gray-400 text-[12px]">10 &mdash; 03</span>
-                                            </div>
-                                            <div className="WinterContentDescription">
-                                                <p>
-                                                Se a temperatura média de inverno na sua região é inferior a 7°C, é essencial utilizar pneus de inverno para garantir uma condução segura em estradas escorregadias, molhadas, cobertas de neve ou gelo.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <HelpGuide 
+                                        img={seasonSummer}
+                                        title={`Abril \u2014 Setembro`}
+                                        subTitle={'04 \u2014 09'}
+                                        content={'Este pneu padrão permite uma condução segura em todas as condições climáticas temperadas, mas é importante lembrar que pneus de verão podem perder desempenho em temperaturas abaixo de 7°C.'}
+                                        />
 
-                                    <div className="tireSeasonSummer mt-5 flex items-start">
-                                        <div className="tireSeasonSummerIcon w-26 md:w-24">
-                                        {
-                                            tireUniversalImage()
-                                        }
-                                        </div>
-                                        <div className="tireSeasonSummerContent px-5">
-                                            <div className="summerContentTitle flex flex-col">
-                                                <span className="font-semibold">Todas as estações</span>
-                                            </div>
-                                            <div className="summerContentDescription">
-                                                <p>
-                                                    Em áreas onde as temperaturas de inverno raramente caem abaixo de 7°C, os pneus 4 estações ainda são menos eficientes do que os pneus de inverno em condições de inverno, ou os pneus de verão em condições de verão.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <HelpGuide 
+                                        className={'mt-5'}
+                                        img={seasonWinter}
+                                        title={`Outubro \u2014 Março`}
+                                        subTitle={'10 \u2014 03'}
+                                        content={'Se a temperatura média de inverno na sua região é inferior a 7°C, é essencial utilizar pneus de inverno para garantir uma condução segura em estradas escorregadias, molhadas, cobertas de neve ou gelo.'}
+                                        />
+
+                                    <HelpGuide 
+                                        className={'mt-5'}
+                                        img={seasonUniversal}
+                                        title={`Todas as estações`}
+                                        content={'Em áreas onde as temperaturas de inverno raramente caem abaixo de 7°C, os pneus 4 estações ainda são menos eficientes do que os pneus de inverno em condições de inverno, ou os pneus de verão em condições de verão.'}
+                                        />
+
                                 </div>
                             }
-
-                     
                         </div>
 
                     </div>
