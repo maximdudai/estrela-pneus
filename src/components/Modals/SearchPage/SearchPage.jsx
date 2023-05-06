@@ -33,7 +33,7 @@ const SearchPage = (props) => {
         if(e.key !== "Enter") return;
         if(!searchBoxTextInput.length) return;
 
-        setSearchHistory((prev) => [...prev, finalSeachMessage]);
+        setSearchHistory((prev) => [...prev, searchBoxTextInput]);
         saveSearchedText();
     };
       

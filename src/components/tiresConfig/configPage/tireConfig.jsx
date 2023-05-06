@@ -1,8 +1,7 @@
-import { useState, useEffect, useRef } from "react";
-import { GrClose } from "react-icons/gr";
-import { BsChevronDown, BsChevronUp } from 'react-icons/bs'
-
+import { useState, useEffect, useRef, useContext } from "react";
 import './tireConfigStyle.css';
+
+import { GrClose } from "react-icons/gr";
 
 import HelpGuide from "../../Modals/HelpGuide/HelpGuide";
 
@@ -14,14 +13,15 @@ import seasonSummer from './configAssets/sunny.png';
 import seasonWinter from './configAssets/snowflake.png'
 import seasonUniversal from './configAssets/season.png'
 
+
 const TireConfig = ({ onClose, modal }) => {
+
     const searchPageContentArea = useRef(null);
     const tireConfigStep = useRef(1);
     const [selectedSeason, setSelectedSeason] = useState(null);
-    const [showSeasonGuide, setShowSeasonGuide] = useState(false);
 
     const onClientCloseModal = () => {
-        if(showSeasonGuide) toggleTireSeasonGuid();
+
         tireConfigStep.current = 1;
         setSelectedSeason(null);
 
@@ -36,10 +36,6 @@ const TireConfig = ({ onClose, modal }) => {
         setSelectedSeason(season);
         
         onClientUpdateTireConfig();
-    };
-
-    const toggleTireSeasonGuid = () => {
-        setShowSeasonGuide(!showSeasonGuide);
     };
 
     useEffect(() => {
@@ -72,9 +68,8 @@ const TireConfig = ({ onClose, modal }) => {
     };
 
     const onClientClickOutside = (e) => {
-        if(searchPageContentArea.current && !searchPageContentArea.current.contains(e.target)) {
-            onClientCloseModal();
-        }
+        if(searchPageContentArea.current && !searchPageContentArea.current.contains(e.target))
+            return onClientCloseModal();
     };
 
     return (
@@ -151,20 +146,8 @@ const TireConfig = ({ onClose, modal }) => {
                         </div>
 
                         <div className="displayClientSeasonGuide flex flex-col items-center mt-10 p-2 w-full h-auto border-b-[1px] border-gray-400 md:w-[90%]">
-                            <div className="toggleClientSeasonButton">
-                                <button 
-                                    onClick={toggleTireSeasonGuid}
-                                    className="flex items-center text-sm"
-                                    type="submit">
-                                    <span className="seasonGuideContent">{showSeasonGuide ? 'Esconder' : 'Mostrar'} o guia para melhor escolha</span>
-                                    <span className="seasonGuideIcon px-2">{!showSeasonGuide ? <BsChevronDown /> : <BsChevronUp />}</span>
-                                </button>
-                            </div>
-
                             {
-                                showSeasonGuide && 
                                 <div className="tireSeasonContent mt-5">
-
                                     <HelpGuide 
                                         img={seasonSummer}
                                         title={`Abril \u2014 Setembro`}
@@ -180,14 +163,14 @@ const TireConfig = ({ onClose, modal }) => {
                                         content={'Se a temperatura média de inverno na sua região é inferior a 7°C, é essencial utilizar pneus de inverno para garantir uma condução segura em estradas escorregadias, molhadas, cobertas de neve ou gelo.'}
                                         />
 
-                                    <HelpGuide 
+                                    <HelpGuide
                                         className={'mt-5'}
                                         img={seasonUniversal}
                                         title={`Todas as estações`}
                                         content={'Em áreas onde as temperaturas de inverno raramente caem abaixo de 7°C, os pneus 4 estações ainda são menos eficientes do que os pneus de inverno em condições de inverno, ou os pneus de verão em condições de verão.'}
                                         />
-
                                 </div>
+
                             }
                         </div>
 

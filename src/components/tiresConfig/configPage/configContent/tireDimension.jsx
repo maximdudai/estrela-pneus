@@ -241,7 +241,6 @@ const TireDimension = () => {
                                 <HelpGuide 
                                     className={'mt-5 text-sm'}
                                     img={tireIndiceFull}
-                                    imgStyle={'w-14'}
                                     title={'Riscos de um índice de carga incorreto'}
                                     content={
                                         <ul className="grid grid-cols-3">
