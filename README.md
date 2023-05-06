@@ -16,7 +16,6 @@ Estrela Pneus is an online shop for all types of vehicle tires. It is built usin
 - [Vite](https://vitejs.dev/) - A build tool for modern web development.
 - [ReactJS](https://reactjs.org/) - A JavaScript library for building user interfaces.
 - [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework for rapid UI development.
-- CSS - A stylesheet language used for describing the presentation of a document written in HTML.
 - [Font Awesome](https://fontawesome.com/) - A library of icons and fonts.
 - [React Icons](https://react-icons.github.io/react-icons) - A collection of popular icons made as React components.
 - [PostCSS](https://postcss.org/) - A CSS post-processor that can transform your CSS in various ways.
