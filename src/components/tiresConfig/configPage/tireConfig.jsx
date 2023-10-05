@@ -3,7 +3,7 @@ import './tireConfigStyle.css';
 
 import { GrClose } from "react-icons/gr";
 
-import HelpGuide from "../../Modals/HelpGuide/HelpGuide";
+import { HelpGuide } from "../../Modals/HelpGuide/HelpGuide";
 
 import TireDimension from './configContent/tireDimension';
 import TireVehicleModel from './configContent/tireVehicle';

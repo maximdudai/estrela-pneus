@@ -51,7 +51,7 @@ let tireConfigContent = [
 ]
 
 import tireImage from '../../assets/pneu-dimensao.png';
-import HelpGuide from "../../../Modals/HelpGuide/HelpGuide";
+import { HelpGuide } from "../../../Modals/HelpGuide/HelpGuide";
 
 import tireIndiceFull from '../configAssets/car-wheel.png';
 import tireIndiceEmpty from '../configAssets/flat-tire.png';
