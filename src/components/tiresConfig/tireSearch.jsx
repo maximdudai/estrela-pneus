@@ -11,7 +11,7 @@ const TireSearch = () => {
     const [showModalByType, setShowModalByType] = useState(null);
 
     const toggleClientModal = (toggle = null) => {
-        setShowModalByType(null);
+        setShowModalByType(toggle);
     };
 
     const displayClientModal = (type = 'dimension') => {
@@ -68,7 +68,7 @@ const TireSearch = () => {
                 </div>
 
                 {
-                    showModalByType !== 'null' && <TireConfig onClose={toggleClientModal} modal={showModalByType}/>
+                    showModalByType !== null && <TireConfig onClose={toggleClientModal} modal={showModalByType}/>
                 }
 
             </div>
